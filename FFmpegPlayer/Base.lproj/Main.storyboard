@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FFmpegPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ig0-BS-ZGR">
+                                <rect key="frame" x="140" y="212" width="320" height="176"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="176" id="6Qe-9x-uM7"/>
+                                    <constraint firstAttribute="width" constant="320" id="htD-OR-7F9"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FFmpeg Video Player" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kP9-w3-x7o">
+                                <rect key="frame" x="218" y="171" width="164" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUV-32-08U">
+                                <rect key="frame" x="285" y="408" width="30" height="30"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="BYZ-38-t0r" eventType="touchDown" id="NfY-WR-qH4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lUV-32-08U" firstAttribute="top" secondItem="ig0-BS-ZGR" secondAttribute="bottom" constant="20" id="F5m-AQ-ac4"/>
+                            <constraint firstAttribute="centerX" secondItem="kP9-w3-x7o" secondAttribute="centerX" id="O8Z-8e-1xL"/>
+                            <constraint firstAttribute="centerX" secondItem="ig0-BS-ZGR" secondAttribute="centerX" id="U1G-yB-ls7"/>
+                            <constraint firstAttribute="centerY" secondItem="ig0-BS-ZGR" secondAttribute="centerY" id="YNc-zI-Oqt"/>
+                            <constraint firstItem="ig0-BS-ZGR" firstAttribute="top" secondItem="kP9-w3-x7o" secondAttribute="bottom" constant="20" id="aUv-I0-8OV"/>
+                            <constraint firstAttribute="centerX" secondItem="lUV-32-08U" secondAttribute="centerX" id="kKH-bd-RGM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playStopButton" destination="lUV-32-08U" id="8i4-Jr-hWA"/>
+                        <outlet property="videoView" destination="ig0-BS-ZGR" id="VS9-R1-dXk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

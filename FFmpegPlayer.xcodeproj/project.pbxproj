@@ -12,7 +12,7 @@
 		F501CF3B1B57EC000071B24F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F501CF391B57EC000071B24F /* Main.storyboard */; };
 		F501CF3D1B57EC000071B24F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F501CF3C1B57EC000071B24F /* Images.xcassets */; };
 		F501CF401B57EC000071B24F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F501CF3E1B57EC000071B24F /* LaunchScreen.xib */; };
-		F501CF4C1B57EC000071B24F /* FFmpegPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501CF4B1B57EC000071B24F /* FFmpegPlayerTests.swift */; };
+		F501CF4C1B57EC000071B24F /* NativeVideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501CF4B1B57EC000071B24F /* NativeVideoTests.swift */; };
 		F501CF661B57F7200071B24F /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F501CF651B57F7200071B24F /* libbz2.dylib */; };
 		F501CF681B57F7340071B24F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F501CF671B57F7340071B24F /* libz.dylib */; };
 		F501CF6A1B57F75B0071B24F /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F501CF691B57F75B0071B24F /* libiconv.dylib */; };
@@ -24,6 +24,7 @@
 		F501CF731B5800BD0071B24F /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F501CF5C1B57F4090071B24F /* libswresample.a */; };
 		F501CF741B5800BD0071B24F /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F501CF5D1B57F4090071B24F /* libswscale.a */; };
 		F501CF761B5904BE0071B24F /* cat.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F501CF751B5904BE0071B24F /* cat.mp4 */; };
+		F575DD8A1B5F97C40062D441 /* NativeVideo.c in Sources */ = {isa = PBXBuildFile; fileRef = F5B150E71B594540008C099D /* NativeVideo.c */; };
 		F5B150E91B594540008C099D /* NativeVideo.c in Sources */ = {isa = PBXBuildFile; fileRef = F5B150E71B594540008C099D /* NativeVideo.c */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +48,7 @@
 		F501CF3F1B57EC000071B24F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F501CF451B57EC000071B24F /* FFmpegPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFmpegPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F501CF4A1B57EC000071B24F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F501CF4B1B57EC000071B24F /* FFmpegPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFmpegPlayerTests.swift; sourceTree = "<group>"; };
+		F501CF4B1B57EC000071B24F /* NativeVideoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeVideoTests.swift; sourceTree = "<group>"; };
 		F501CF551B57F3F30071B24F /* FFmpeg-iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "FFmpeg-iOS"; sourceTree = "<group>"; };
 		F501CF571B57F4090071B24F /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = "FFmpeg-iOS/lib/libavcodec.a"; sourceTree = "<group>"; };
 		F501CF581B57F4090071B24F /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavdevice.a; path = "FFmpeg-iOS/lib/libavdevice.a"; sourceTree = "<group>"; };
@@ -150,7 +151,7 @@
 		F501CF481B57EC000071B24F /* FFmpegPlayerTests */ = {
 			isa = PBXGroup;
 			children = (
-				F501CF4B1B57EC000071B24F /* FFmpegPlayerTests.swift */,
+				F501CF4B1B57EC000071B24F /* NativeVideoTests.swift */,
 				F501CF491B57EC000071B24F /* Supporting Files */,
 			);
 			path = FFmpegPlayerTests;
@@ -275,7 +276,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F501CF4C1B57EC000071B24F /* FFmpegPlayerTests.swift in Sources */,
+				F575DD8A1B5F97C40062D441 /* NativeVideo.c in Sources */,
+				F501CF4C1B57EC000071B24F /* NativeVideoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,9 +451,15 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/FFmpeg-iOS/include/**",
+				);
 				INFOPLIST_FILE = FFmpegPlayerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FFmpegPlayer/FFmpegPlayer-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FFmpegPlayer.app/FFmpegPlayer";
 			};
 			name = Debug;
@@ -464,9 +472,15 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/FFmpeg-iOS/include/**",
+				);
 				INFOPLIST_FILE = FFmpegPlayerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FFmpegPlayer/FFmpegPlayer-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FFmpegPlayer.app/FFmpegPlayer";
 			};
 			name = Release;
